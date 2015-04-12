@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Modulo2</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Menu Abierto</string>
+    <string name="drawer_close">Menu Cerrado</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="postres">Postres</string>
+    <string name="platos">Platos</string>
+    <string name="mi_widget_personalizado">Mi Widget M2</string>
+    <string name="title_activity_widget_config">WidgetConfig</string>
+    <string name="bebidas">Bebidas</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="mipedido">Mi Pedido</string>
+    <string name="usuario">Usuario: </string>
+    <string name="registrarse">Crear cuenta</string>
+    <string name="contraseña">Contraseña: </string>
+    <string name="contraseña2">Repetir contraseña: </string>
+    <string name="nombre">Nombre:</string>
+    <string name="regresar">Regresar</string>
+    <string name="perfil">Mi Perfil</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_nueva_cuenta">NuevaCuenta</string>
+    <string name="title_activity_perfil">Perfil</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/LblMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingrese el mensaje personalizado"/>
+    <EditText
+        android:id="@+id/TxtMensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/BtnAceptar"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="aceptar"
+            android:layout_margin="16dp"
+            android:background="#2196f3"/>
+
+        <Button
+            android:id="@+id/BtnCancelar"
+            android:layout_width="120dp"
+            android:layout_margin="16dp"
+            android:background="#2196f3"
+            android:layout_height="wrap_content"
+            android:text="cancelar"/>
+    </LinearLayout>
+</LinearLayout>

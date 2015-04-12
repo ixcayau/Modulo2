@@ -1,0 +1,52 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutDrawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- Contenido Principal -->
+    <LinearLayout
+        android:id="@+id/pedido"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:visibility="visible"
+        >
+
+        <TextView android:gravity="center"
+            android:textSize="@dimen/abc_action_bar_progress_bar_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mipedido"
+            android:background="#2196f3"/>
+        <TextView
+            android:id="@+id/lblSeleccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:padding="8dp"/>
+
+        <ListView
+            android:id="@+id/listaMisProductos"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/lblSeleccion" />
+        </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frames"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </FrameLayout>
+
+    <!-- Menu Lateral -->
+
+    <ListView
+        android:id="@+id/menu_lateral"
+        android:layout_width="240dp"
+        android:background="#111"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:layout_height="match_parent"/>
+
+</android.support.v4.widget.DrawerLayout>
