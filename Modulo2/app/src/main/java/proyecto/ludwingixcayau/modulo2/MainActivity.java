@@ -1,6 +1,9 @@
 package proyecto.ludwingixcayau.modulo2;
 
+import android.app.Activity;
+import android.content.ContentValues;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.ActivityCompat;
@@ -14,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,33 +32,14 @@ public class MainActivity extends ActionBarActivity {
     private CharSequence tituloApp;
     private ActionBarDrawerToggle drawerToggle;
 
-    private Producto[] datos = new Producto[]{
-            new Producto("Quesoburguesa", "Comida",0,1),
-            new Producto("Coca Cola", "Bebida",0,1)
-    };
-    private LinearLayout pedido;
-    private ListView listaOpciones;
-    private TextView lblOpSeleccionada;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listaOpciones = (ListView) findViewById(R.id.listaMisProductos);
-        lblOpSeleccionada = (TextView) findViewById(R.id.lblSeleccion);
 
-        AdaptadorP adaptador = new AdaptadorP(this, datos);
-        listaOpciones.setAdapter(adaptador);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frames,new MiPedido()).commit();
 
-        listaOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Producto item = (Producto)parent.getItemAtPosition(position);
-
-                lblOpSeleccionada.setText(item.getTipo()+": " + item.getNombre()+" Q"+(item.getPrecio()*item.getCantidad())+" (Q"+item.getPrecio()+"c/u)");
-
-            }
-        });
         opcionesMenu = new String[] {"Platos","Bebidas","Postres","Mi Pedido","Mi Perfil"};
         drawerLayout = (DrawerLayout)findViewById(R.id.layoutDrawer);
         menuLateral = (ListView)findViewById(R.id.menu_lateral);
@@ -65,43 +50,40 @@ public class MainActivity extends ActionBarActivity {
                 , opcionesMenu
         ));
 
-        pedido = (LinearLayout) findViewById(R.id.pedido);
         menuLateral.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                pedido.setVisibility(LinearLayout.GONE);
-                Fragment fragment = null;
-
+                FragmentManager fragmentManager = getSupportFragmentManager();
                 switch (position){
                     case 0:
-                        fragment = new Platos();
+                        fragmentManager.beginTransaction().replace(R.id.frames,new Platos()).commit();
                         break;
                     case 1:
-                        fragment = new Bebidas();
+                        fragmentManager.beginTransaction().replace(R.id.frames,new Bebidas()).commit();
                         break;
                     case 2:
-                        fragment = new Postres();
+                        fragmentManager.beginTransaction().replace(R.id.frames,new Postres()).commit();
                         break;
                     case 3:
-                        fragment = new MiPedido();
-                        pedido.setVisibility(LinearLayout.VISIBLE);
+                        fragmentManager.beginTransaction().replace(R.id.frames,new MiPedido()).commit();
                         break;
                     case 4:
-                        fragment = new Perfil();
+                        fragmentManager.beginTransaction().replace(R.id.frames,new Perfil()).commit();
                         break;
                 }
 
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.frames,fragment).commit();
 
                 menuLateral.setItemChecked(position, true);
 
                 tituloSeccion = opcionesMenu[position];
-                getSupportActionBar().setTitle(tituloSeccion);
 
-                drawerLayout.closeDrawer(menuLateral);
-                if(position==3){
-                    fragmentManager.beginTransaction().remove(fragment).commit();
+                getSupportActionBar().setTitle(tituloSeccion);
+                try {
+
+                    drawerLayout.closeDrawer(menuLateral);
+
+                }catch (ClassCastException e){
+
                 }
             }
         });
@@ -139,17 +121,21 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu){
-        boolean menuAbierto = drawerLayout.isDrawerOpen(menuLateral);
+        try {
 
-        if(menuAbierto){
-            menu.findItem(R.id.menu_new).setVisible(false);
-            menu.findItem(R.id.menu_save).setVisible(false);
-        }
-        else{
-            menu.findItem(R.id.menu_new).setVisible(true);
-            menu.findItem(R.id.menu_save).setVisible(true);
-        }
+            boolean menuAbierto = drawerLayout.isDrawerOpen(menuLateral);
+            if(menuAbierto){
+                menu.findItem(R.id.menu_new).setVisible(false);
+                menu.findItem(R.id.menu_save).setVisible(false);
+            }
+            else{
+                menu.findItem(R.id.menu_new).setVisible(true);
+                menu.findItem(R.id.menu_save).setVisible(true);
+            }
 
+        }catch (ClassCastException e){
+
+        }
         return super.onPrepareOptionsMenu(menu);
     }
 

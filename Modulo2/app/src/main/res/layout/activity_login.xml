@@ -53,10 +53,23 @@
             android:layout_width="wrap_content"
             android:layout_gravity="right"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/registrarse"
             android:textSize="15dp"
             android:id="@+id/crearCuenta"
             android:layout_centerHorizontal="true" />
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuarios" />
+
+
+    <TextView
+        android:id="@+id/txtResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
     </LinearLayout>
 
 </RelativeLayout>

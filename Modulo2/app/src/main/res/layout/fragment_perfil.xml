@@ -12,17 +12,15 @@
         android:background="#2196f3"/>
 
     <LinearLayout
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_margin="20dp"
         android:layout_height="wrap_content"
-        android:baselineAligned="true"
         android:orientation="vertical"
         android:id="@+id/linearLayout">
 
-        <TextView android:text="@string/nombre"
+        <TextView
+            android:id="@+id/nombrePerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"/>
@@ -31,9 +29,10 @@
             android:id="@+id/txtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:textSize="20dp"/>
 
-        <TextView android:text="@string/usuario"
+        <TextView android:id="@+id/usuarioPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"/>
@@ -41,21 +40,23 @@
             android:id="@+id/txtUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:textSize="20dp"/>
 
-        <TextView android:text="@string/contraseña"
+        <TextView android:id="@+id/contrasenaPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"/>
 
         <EditText
             android:id="@+id/txtContraseña"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textSize="20dp"/>
         <Button
-            android:id="@+id/btnContinuar"
+            android:id="@+id/btnCerrarSesion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
